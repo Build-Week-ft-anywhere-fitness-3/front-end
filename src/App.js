@@ -6,6 +6,7 @@ import Logout from "./components/Logout";
 import NavBar from "./components/NavBar"; 
 import SignUp from "./components/SignUp";
 import CreateClass from "./components/CreateClass";
+import InstructorHome from "./components/InstrustorHome";
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
     <Route exact path="signup" element={<SignUp />}/>
     
     <Route path="createClass" element={<CreateClass />}/>
-    
+    <Route path="instructorhome" element={<InstructorHome/>}/>
     <Route path="logout" element={<Logout />} />
     </Routes>
    </BrowserRouter>

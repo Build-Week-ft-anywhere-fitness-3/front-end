@@ -1,25 +1,23 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
 const SignUp = () => {
-    const [ state, setState ] = useState({                
-        username:'',
-        password:'',
-        isInstructor: false              
+    const [ state, setState ] = useState({
+        username: "",
+        password: "",
+        email: "",
+        role: ""
     })
     const [ error, setError ] = useState('')
-
     const handleSubmit = e => {
         e.preventDefault();
         axios.post(``, state)
             .then(res => {
-                console.log(res.data)
+                console.log(res)
             })
             .catch(err => {
                 console.log(err)
                 // setError(err.response.data)
             })
-
     }
     const handleChange = e => {
         setState({
@@ -27,24 +25,34 @@ const SignUp = () => {
             [e.target.name]:e.target.value
         })
     }
-    
-    const handleInstructor = () => {
+
+    const handleInstructor = e => {
         setState({
             ...state,
-            isInstructor: !state.isInstructor
+            role: e.target.value
         })
     }
+    
     return (
         <div className="sign-up">
             <h1>Sign Up!</h1>
             <form onSubmit={handleSubmit}>
                 <label>
-                    Username
+                    User Name
                     <input
                     name="username"
                     type="text"
                     onChange={handleChange}
-                    value={state.credentials.username}
+                    value={state.username}
+                    />
+                </label>
+                <label>
+                    Email
+                    <input
+                    name="email"
+                    type="email"
+                    onChange={handleChange}
+                    value={state.email}
                     />
                 </label>
                 <label>
@@ -53,15 +61,16 @@ const SignUp = () => {
                     name="password"
                     type="password"
                     onChange={handleChange}
-                    value={state.credentials.password}
+                    value={state.password}
                     />
                 </label>
                 <lebel>
                     Sign up as Instructor?
-                    <select>
-                        <option onClick={handleInstructor}>Yes</option>                        
+                    <select value={state.role} onChange={(e)=> handleInstructor(e)}>
+                        <option value="" >Select</option>
+                        <option name="instructor" value="instructor">Instructor</option>
+                        <option name="client" value="client">Not Instructor</option>
                     </select>
-
                 </lebel>
                 <button>Sign Up</button>
             </form>

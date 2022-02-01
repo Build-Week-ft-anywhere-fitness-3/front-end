@@ -10,13 +10,7 @@ import CreateClass from "./components/CreateClass";
 function App() {
   return (
    <div className="App">
-<<<<<<< HEAD
-     
      <CreateClass />
-=======
-     Hi
->>>>>>> main
-
    </div>
   );
 }

@@ -11,7 +11,7 @@ const SignUp = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        axios.post(``, state)
+        axios.post(`https://bw-anywherefitness-3.herokuapp.com/api/auth/register`, state)
             .then(res => {
                 console.log(res.data)
             })
@@ -56,13 +56,13 @@ const SignUp = () => {
                     value={state.credentials.password}
                     />
                 </label>
-                <lebel>
+                <label>
                     Sign up as Instructor?
                     <select>
                         <option onClick={handleInstructor}>Yes</option>                        
                     </select>
 
-                </lebel>
+                </label>
                 <button>Sign Up</button>
             </form>
                 {

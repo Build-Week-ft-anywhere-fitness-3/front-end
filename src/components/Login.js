@@ -22,14 +22,14 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault(); 
-        axios.post("", cred)
+        axios.post("https://bw-anywherefitness-3.herokuapp.com/api/auth/login", cred)
             .then(resp => {
                 console.log(resp); 
-                localStorage.setItem("token",); 
+                localStorage.setItem("token", resp.data.token); 
                 push('/client')
             })
             .catch(err => {
-                console.log(err)
+                console.log({err})
             });
     };
 
@@ -47,7 +47,7 @@ const Login = () => {
                 <input onChange={handleChange} name="password" type="password" id="password" />
             </div>
 
-            <button>Logout</button>
+            <button>Login</button>
             </form>
 
         </div>

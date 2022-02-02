@@ -28,4 +28,5 @@ const ModalContainer = styled.div`
     background: white;
     padding: 2rem;
     text-align: center;
+    border-radius: 5px; 
 `

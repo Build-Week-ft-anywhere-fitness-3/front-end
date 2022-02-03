@@ -29,6 +29,7 @@ const NavBar = () => {
             textColor: "white",
         }}>
         <StyledLink to="login">Login</StyledLink>
+        <StyledLink to="instructorLogin">Instructor Login</StyledLink>
         <StyledLink to="signup">Sign Up</StyledLink>
         <StyledLink to="client">Find a class</StyledLink>
         <StyledLink to="createclass">Create Class</StyledLink>

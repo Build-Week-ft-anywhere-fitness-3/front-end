@@ -40,12 +40,14 @@ img {
   flex-direction: row;
   justify-content: space-evenly;
 }
+
 .ComponentContainer{
   height: 70%;
   justify-content: center;
   align-items: center;
   display:flex;
 }
+
 .ModalContainer{
   width: 500px;
   background: white;
@@ -53,25 +55,30 @@ img {
   text-align: center;
   border-radius: 5px; 
 }
+
 .Form{
   padding:1rem;
 }
+
 label{
   display: block;
   text-align: left;
   font-size: 1.5rem;
   margin-top: 0.5em;
 }
+
 input{
   font-size: 1rem;
   padding: 1rem 0;
   width:100%;
 }
+
 select{
   font-size: 1rem;
   padding: 1rem 0;
   width:100%;
 }
+
 button{
   padding:1rem;
   width: 100%;

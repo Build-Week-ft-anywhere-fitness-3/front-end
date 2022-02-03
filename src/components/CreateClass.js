@@ -1,19 +1,27 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+
 import "./CreateClass.css";
+
+import axios from 'axios';
+
 
 const CreateClass = () => {
     const [ state, setState ] = useState({
-        className:'',
-        classType:'',
-        ampm:'',
-        hour:'',
-        minute:'',
-        duration: '',
-        level: '',
-        location: '',
-        currAttendees: 0,
-        maxAttendees:0
+        class_name: "",        
+        class_type: "",
+        class_start_time: "09:00:00",
+        class_duration: "",
+        class_intensity_level: "",
+        class_location: "",
+        total_clients: 0,
+        max_class_size: 0,        
+    })
+
+    const [ time, setTime ] = useState({
+        ampm:'am',
+        hour:'1',
+        minute:'00',        
     })
 
     const handleChange = e => {
@@ -22,10 +30,35 @@ const CreateClass = () => {
             [e.target.name]: e.target.value
         })
     }
-
+    const timeConvert = e => {
+        setTime({
+            ...time,
+            [e.target.name]: e.target.value
+        })
+    }
     const handleSubmit = e => {
         e.preventDefault();
-
+        let hour = 1
+        if(time.ampm === 'pm'){
+            hour = parseInt(time.hour) + 12
+        } else {
+            hour = time.hour
+        }
+        if(hour < 10){
+            hour = `0${hour}`
+        }
+        let finalTime = `${hour}:${time.minute}:00`
+        setState({
+            ...state,
+            class_start_time: finalTime
+        })
+        axios.post(``, state)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     return (<ComponentContainer>
@@ -36,15 +69,15 @@ const CreateClass = () => {
                 <Label>
                     Class Name
                     <Input
-                    name="className"
+                    name="class_name"
                     type="text"
-                    value={state.className}
+                    value={state.class_name}
                     onChange={handleChange}
                     />
                 </Label>
                 <Label>
                     Class Type
-                    <Select name="classType" value={state.classType} onChange={handleChange}>
+                    <Select name="class_type" value={state.class_type} onChange={handleChange}>
                         <option value="none" selected>Class type</option>
                         <option value="flex">Flexibility exercise</option>
                         <option value="aero">Aerobic exercise</option>
@@ -54,11 +87,11 @@ const CreateClass = () => {
                 </Label>
                 <Label>
                     Start Time
-                    <SelectTime name="ampm" value={state.ampm} onChange={handleChange}>                        
+                    <SelectTime name="ampm" value={time.ampm} onChange={timeConvert}>                        
                         <option value="am">AM</option>
                         <option value="pm">PM</option>                        
                     </SelectTime>
-                    <SelectTime name="hour" value={state.hour} onChange={handleChange}>                        
+                    <SelectTime name="hour" value={time.hour} onChange={timeConvert}>                        
                         <option value="1">1</option>
                         <option value="2">2</option>                        
                         <option value="3">3</option>                        
@@ -73,7 +106,7 @@ const CreateClass = () => {
                         <option value="12">12</option>                        
                     </SelectTime>
                     :
-                    <SelectTime name="minute" value={state.minute} onChange={handleChange}>                        
+                    <SelectTime name="minute" value={time.minute} onChange={timeConvert}>                        
                         <option value="00">00</option>
                         <option value="30">30</option>                        
                     </SelectTime>
@@ -81,25 +114,26 @@ const CreateClass = () => {
                 <Label>
                     Duration
                     <Input
-                    name="duration"
+                    name="class_duration"
                     type="number"
-                    value={state.duration}
+                    value={state.class_duration}
                     onChange={handleChange}
                     />
                 </Label>
                 <Label>
                     Level
-                    <Select name="level" value={state.level} onChange={handleChange}>
+                    <Select name="class_intensity_level" value={state.class_intensity_level} onChange={handleChange}>
                         <option value="none" selected>Select Level</option>
-                        <option value="beginner">Beginner</option>
-                        <option value="intermediate">Intermediate</option>
-                        <option value="advanced">Advanced</option>
-                        <option value="other">other</option>
+                        <option value="1">1 Beginner</option>
+                        <option value="2">2 Intermediate</option>
+                        <option value="3">3 Advanced</option>
+                        <option value="4">4 Athlete</option>
+                        <option value="5">5 Even harder</option>
                     </Select>
                 </Label>
                 <Label>
                     Location
-                    <Select name="location" value={state.location} onChange={handleChange}>
+                    <Select name="class_location" value={state.class_location} onChange={handleChange}>
                         <option value="none" selected>Select Location</option>
                         <option value="upperEast">Upper East</option>
                         <option value="upperWest">Upper West</option>
@@ -111,18 +145,18 @@ const CreateClass = () => {
                 <Label>
                     Current attendees
                     <Input
-                    name="attendees"
+                    name="total_clients"
                     type="number"
-                    value={state.attendees}
+                    value={state.total_clients}
                     onChange={handleChange}
                     />
                 </Label>
                 <Label>
                     Max Attendees
                     <Input
-                    name="maxAttendees"
+                    name="max_class_size"
                     type="number"
-                    value={state.maxAttendees}
+                    value={state.max_class_size}
                     onChange={handleChange}
                     />
                 </Label>

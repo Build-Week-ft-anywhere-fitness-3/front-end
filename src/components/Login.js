@@ -8,13 +8,6 @@ import "./Login.css";
 
 
 const Login = () => {
-
-    const LoginDiv = styled.div`
-        background-color: 274c77; 
-        color: white;
-        `
-
-
     const push = useNavigate(); 
 
     const [cred, setCred] = useState({
@@ -32,11 +25,11 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault(); 
-        axios.post("", cred)
+        axios.post("https://anywhere-fitness-buildweek.herokuapp.com/api/clients/register", cred)
             .then(resp => {
                 console.log(resp); 
                 localStorage.setItem("token",); 
-                push('/client')
+                push('/clients')
             })
             .catch(err => {
                 console.log(err)
@@ -52,32 +45,32 @@ const Login = () => {
         <h1>Welcome To AnyWhere Fitness! <br/> Login below to schedule a class!</h1>
       </div> 
     
-    <ComponentContainer>  
+    <div className="ComponentContainer">  
     
     <div className="login">   
-    <ModalContainer>
+    <div className="ModalContainer">
         <LoginDiv className="App">
-            <h1 className="h1">Login</h1>
-            <FormGroup onSubmit={handleSubmit}>
+            <h1 className="login">Login</h1>
+            <form onSubmit={handleSubmit}>
             <div>
-                <Label htmlFor="username">Username:</Label>
-                <Input onChange={handleChange} name="username" id="username" />
+                <label htmlFor="username">Username:</label>
+                <input onChange={handleChange} name="username" id="username" />
             </div>
 
             <div>
-                <Label htmlFor="password">Password:</Label>
-                <Input onChange={handleChange} name="password" type="password" id="password" />
+                <label htmlFor="password">Password:</label>
+                <input onChange={handleChange} name="password" type="password" id="password" />
             </div>
 
-            <Button>Login</Button>
-            </FormGroup>
+            <button>Login</button>
+            </form>
            
         </LoginDiv>
         
-    </ModalContainer>
+    </div>
     
     </div>
-</ComponentContainer>
+</div>
 <div className="contact">
     <div className="itemContainer">
         <Email className="icon"/>
@@ -99,50 +92,8 @@ const Login = () => {
 }
 
 export default Login; 
-const ComponentContainer = styled.div`
-    height: 70%;
-    justify-content: center;
-    align-items: center;
-    display:flex;
-    border-style: none; 
-`
-
-const ModalContainer = styled.div`
-    width: 500px;
-    background: white;
-    padding: 2rem;
-    text-align: center;
-    background-color: #274c77;
-    border-radius: 5px; 
-    border-style: none; 
-`
-
-const Label = styled.label`
-    display: block;
-    text-align: left;
-    font-size: 1.5rem;
-    margin-top: 0.5em;
-    color: white;
-`
-
-const FormGroup = styled.form`
-    padding:1rem;
-`
-
-const Input = styled.input`
-    font-size: 1rem;
-    padding: 1rem 0;
-    width:100%;
-    border: 1px solid #2b5381; 
-    background-color: #1d3557;
     
-`
-
-const Button = styled.button`
-    padding:1rem;
-    width: 100%;
-    margin-top: 1em;
-    border: 1px solid #2b5381; 
-    background-color: #1d3557;
-    color: white;
-`
+    const LoginDiv = styled.div`
+        background-color: 274c77; 
+        color: white;
+        `

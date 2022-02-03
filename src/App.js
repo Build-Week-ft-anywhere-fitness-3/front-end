@@ -7,14 +7,20 @@ import NavBar from "./components/NavBar";
 import SignUp from "./components/SignUp";
 import CreateClass from "./components/CreateClass";
 import InstructorHome from "./components/InstructorHome";
+
+ 
+
 import FindClass from "./components/FindClass";
+
 
 
 function App() {
   return (
+    
    <BrowserRouter>
    <NavBar />
    <Routes>
+   
     <Route exact path="/" element={<Login />}/>
     <Route exact path="login" element={<Login />}/>
     <Route exact path="signup" element={<SignUp />}/>
@@ -23,6 +29,7 @@ function App() {
     <Route path="instructor" element={<InstructorHome/>}/>
     <Route path="logout" element={<Logout />} />
     </Routes>
+   
    </BrowserRouter>
   );
 }

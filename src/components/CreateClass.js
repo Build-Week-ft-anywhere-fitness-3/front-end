@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+
+import "./CreateClass.css";
+
 import axios from 'axios';
+
 
 const CreateClass = () => {
     const [ state, setState ] = useState({
@@ -61,7 +65,7 @@ const CreateClass = () => {
     <ModalContainer>
         <div className="create-class form">
             <FormGroup onSubmit={handleSubmit}>
-                <h1>Create Class</h1>
+                <h1>Create A Class</h1>
                 <Label>
                     Class Name
                     <Input
@@ -176,6 +180,7 @@ const ModalContainer = styled.div`
     background: white;
     padding: 2rem;
     text-align: center;
+    border-radius: 5px; 
 `
 
 const Label = styled.label`

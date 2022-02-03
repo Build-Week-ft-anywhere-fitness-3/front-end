@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import "./SignUp.css";
 
 const SignUp = () => {
     const [ state, setState ] = useState({
@@ -99,6 +100,7 @@ const ModalContainer = styled.div`
     background: white;
     padding: 2rem;
     text-align: center;
+    border-radius: 5px; 
 `
 
 const Label = styled.label`

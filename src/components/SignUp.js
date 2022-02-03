@@ -13,7 +13,6 @@ const SignUp = () => {
         e.preventDefault();
         axios.post(`https://anywhere-fitness-buildweek.herokuapp.com/api/clients/register`, state)
             .then(res => {
-                console.log(res.data)
                 setMessage(res.data)
             })
             .catch(err => {

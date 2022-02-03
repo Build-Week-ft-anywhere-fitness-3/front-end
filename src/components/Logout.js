@@ -1,19 +1,13 @@
 import React, { useEffect } from 'react'; 
 import { useNavigate } from 'react-router-dom'; 
-import axiosWithAuth from './../utils/axiosWithAuth'; 
 
 const Logout = () => {
     const push = useNavigate(); 
     
     useEffect(() => {
-        axiosWithAuth().post('/logout')
-            .then(resp => {
-                localStorage.removeItem("token");
-                push('/login');
-            })
-            .catch(err => {
-                console.log(err)
-            })
+        localStorage.removeItem("token");
+        localStorage.removeItem("username")
+        push('/login');           
     }, []); 
     return (<div></div>)
 }

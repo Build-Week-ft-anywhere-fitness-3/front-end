@@ -1,7 +1,6 @@
 import React, { useState } from 'react'; 
 import { useNavigate } from 'react-router-dom'; 
 import axios from 'axios'; 
-import styled from 'styled-components';
 import img1 from "./../images/fitness3.jpg"; 
 import {Email, PhoneEnabled, Home } from "@material-ui/icons";
 import "./Login.css";
@@ -25,11 +24,11 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault(); 
-        axios.post("https://anywhere-fitness-buildweek.herokuapp.com/api/clients/register", cred)
+        axios.post("https://anywhere-fitness-buildweek.herokuapp.com/api/clients/login", cred)
             .then(resp => {
                 console.log(resp); 
-                localStorage.setItem("token",); 
-                push('/clients')
+                localStorage.setItem("token",resp.data.token); 
+                push('/client')
             })
             .catch(err => {
                 console.log(err)
@@ -49,7 +48,7 @@ const Login = () => {
     
     <div className="login">   
     <div className="ModalContainer">
-        <LoginDiv className="App">
+        <div className="LoginDiv">
             <h1 className="login">Login</h1>
             <form onSubmit={handleSubmit}>
             <div>
@@ -61,12 +60,9 @@ const Login = () => {
                 <label htmlFor="password">Password:</label>
                 <input onChange={handleChange} name="password" type="password" id="password" />
             </div>
-
             <button>Login</button>
-            </form>
-           
-        </LoginDiv>
-        
+            </form>           
+        </div>        
     </div>
     
     </div>
@@ -90,10 +86,4 @@ const Login = () => {
 </>
     )
 }
-
-export default Login; 
-    
-    const LoginDiv = styled.div`
-        background-color: 274c77; 
-        color: white;
-        `
+export default Login;

@@ -1,10 +1,11 @@
-# 🏋️ Anywhere Fitness 🏋️
+# 🏋️ Anywhere Fitness
 
-Anywhere Fitness is the all-in-one solution that assists Instructors with scheduling, and promoting classes, while hlelping clients to discover and attend from ANYWHERE!
+With Anywhere Fitness Certified fitness instructors now have a simple method to eliminate the unpleasantness of recording attendance and processing client payments.
 
-Anywherer Fitness Handles:
+Anywhere Fitness Helps Handle:
   - Class scheduling
   - Booking classes and trainers
   - User Accounts
   - Sales Tracking 
+  - promoting classes
   - and much more.

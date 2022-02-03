@@ -16,8 +16,8 @@ Instructors can take attendance, request and process payments, create virtual â€
 
 1. Fork and clone this repository
 
-2. Run npm install in your terminal
+2. Run 'npm install' in your terminal
 
-3. Run npm start in a seperate terminal
+3. Run 'npm start' in a seperate terminal
 
 4. Go to http://localserver:3000 to start navigating

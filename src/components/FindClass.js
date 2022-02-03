@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
+import axiosWithAuth from './../utils/axiosWithAuth';
 import FoundClass from './FoundClass';
 
 const FindClass = () => {
@@ -44,18 +44,23 @@ const FindClass = () => {
             class_start_time: finalTime
         })
         
-        // axios.get(``)
-        // .then(res=> {
-        //     console.log(res)
-        //     handleSearch()
-        // })
-        // .catch(err => {
-        //     console.log(err)
-        // })
+        let token = localStorage.getItem('token')
+        axiosWithAuth().get(`/clients/classes/`,{
+            headers: {
+                authorization: token
+            }
+        })
+        .then(res=> {
+            console.log(res)
+            handleSearch(res.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }
     
-    const handleSearch = () => {
-        // setClass()
+    const handleSearch = found => {
+        setClass(found)
     }
 
     const handleChange = e => {
@@ -76,9 +81,9 @@ const FindClass = () => {
                         Class Type
                         <Select name="class_type" value={state.class_type} onChange={handleChange}>
                             <option value="none" selected>Select Class Type</option>
-                            <option value="flex">Flexibility exercise</option>
-                            <option value="aero">Aerobic exercise</option>
-                            <option value="anaero">Anaerobic exercise</option>
+                            <option value="Yoga">Yoga</option>
+                            <option value="Kickboxing">Kick boxing</option>
+                            <option value="HIIT">HIIT</option>
                             <option value="other">other</option>
                         </Select>
                     </Label>
@@ -141,7 +146,7 @@ const FindClass = () => {
                 <Button>Submit</Button>
                 </FormGroup>
             {
-                // foundClass ? <FoundClass foundClass={foundClass}/> : (<div></div>)            
+                foundClass ? <FoundClass foundClass={foundClass} searchedClass={state}/> : (<div></div>)            
             }
             </div>
         </div>

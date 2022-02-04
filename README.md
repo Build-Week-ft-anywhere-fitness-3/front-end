@@ -32,4 +32,7 @@ Yuriko Takamiya
 [GitHub](https://github.com/CaitlinTalbert)
 Caitlin Talbert 
 
+[GitHub](https://github.com/lomelo-x)
+Angelo Lomelo
+
 

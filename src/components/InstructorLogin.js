@@ -28,6 +28,7 @@ const InstructorLogin = () => {
         .then(res => {
             console.log(res)
             localStorage.setItem("username", cred.username)
+            localStorage.setItem("id", res.data.instructor_id)
             localStorage.setItem("token", res.data.token); 
             push('/instructor')
         })

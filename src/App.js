@@ -8,11 +8,7 @@ import SignUp from "./components/SignUp";
 import CreateClass from "./components/CreateClass";
 import InstructorHome from "./components/InstructorHome";
 import InstructorLogin from "./components/InstructorLogin";
- 
-
 import FindClass from "./components/FindClass";
-
-
 
 function App() {
   return (

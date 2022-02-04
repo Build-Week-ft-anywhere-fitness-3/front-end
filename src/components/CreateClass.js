@@ -2,21 +2,22 @@ import React, { useState } from 'react';
 
 import "./CreateClass.css";
 
-import axios from 'axios';
+import axiosWithAuth from './../utils/axiosWithAuth';
 
 const initialState = {
     class_name: "",        
     class_type: "",
-    class_start_time: "09:00",
+    class_start_time: "",
     class_duration: "",
     class_intensity_level: "",
     class_location: "",
     total_clients: 0,
-    max_class_size: 0,        
+    max_class_size: 0,    
+    instructor_id: 0    
 }
 const CreateClass = () => {
-    const [ state, setState ] = useState(initialState)
 
+    const [ state, setState ] = useState(initialState)
     const [ time, setTime ] = useState({
         ampm:'am',
         hour:'1',
@@ -38,7 +39,7 @@ const CreateClass = () => {
     const handleSubmit = e => {
         e.preventDefault();
         let hour = 1
-        if(time.ampm === 'pm'){
+        if (time.ampm === 'pm'){
             hour = parseInt(time.hour) + 12
         } else {
             hour = time.hour
@@ -46,19 +47,24 @@ const CreateClass = () => {
         if(hour < 10){
             hour = `0${hour}`
         }
+
         let finalTime = `${hour}:${time.minute}`
+        let gotId = localStorage.getItem('id')
+
         setState({
             ...state,
-            class_start_time: finalTime
+            class_start_time: finalTime,
+            instructor_id: gotId
         })
-        axios.post(`https://anywhere-fitness-buildweek.herokuapp.com/api/instructors/:inst_id/create`, state)
-            .then(res => {
-                console.log(res)
-            })
-            .catch(err => {
-                console.log(err)
-            })
-        setState(initialState)
+        
+        axiosWithAuth().post(`/instructors/create`, state)
+        .then(res => {
+            console.log(res)
+            // setState(initialState)
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }
 
     return (<div className="ComponentContainer">

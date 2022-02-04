@@ -1,16 +1,16 @@
 # Anywhere Fitness 🏋️ 
 
-With Anywhere Fitness Certified fitness instructors now have a simple method to eliminate the unpleasantness of recording attendance and processing client payments.
+Anywhere fitness is a solution for fitness instructors and independent fitness businesses that offer classes and appointments, 
+as well as help to ease the unnecessary logistics that cut into training time, like taking attendance or scheduling future training sessions. 
 
-Anywhere Fitness Helps Handle:
-  - Class scheduling
-  - Booking classes and trainers
-  - User Accounts
-  - Sales Tracking 
-  - promoting classes
-  - and much more.
+With Anywhere Fitness you are able to: 
 
-Instructors can take attendance, request and process payments, create virtual “punch passes” for each type of class offered, alert clients of cancellations or location changes and so much more. Clients can easily find out information on classes - location, class size, start time and duration, as well as reschedule or cancel an upcoming appointment or reservation right from the mobile app.
+ ✔️ As an instructor: create a class, take attendance, maintain a record of your members and ongoing classes. 
+
+ ✔️ As a client: schedule a class based on type, time, duration, level, and location, and even reschedule or cancel upcoming appointments. 
+
+Anywhere fitness simplifies client scheduling, allows you or your business to easily take on more clients, and is everything you need to efficiently run and manage your gym. 
+
 
 # Installation
 
@@ -18,6 +18,18 @@ Instructors can take attendance, request and process payments, create virtual �
 
 2. Run `npm install` in your terminal
 
-3. Run `npm start` in a seperate terminal
+3. Run `npm start` in a separate terminal
 
 4. Go to http://localserver:3000 to start navigating
+
+
+# Contributors
+Thanks goes to these amazing people: 
+
+[GitHub](https://github.com/yuririnnnu)
+Yuriko Takamiya 
+
+[GitHub](https://github.com/CaitlinTalbert)
+Caitlin Talbert 
+
+

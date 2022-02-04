@@ -1,6 +1,3 @@
-h1{
-    color: black;
-}
 .ComponentContainer{
     height: 70%;
     justify-content: center;
@@ -37,4 +34,10 @@ button{
     padding:1rem;
     width: 100%;
     margin-top: 1em;
+}
+.SelectTime{
+    font-size: 1rem;
+    padding: 1rem 0;
+    width:10%;
+    margin: 0 0.5em;
 }

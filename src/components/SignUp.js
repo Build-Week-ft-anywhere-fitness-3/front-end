@@ -1,26 +1,27 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
 import "./SignUp.css";
 
 const SignUp = () => {
     const [ state, setState ] = useState({
-        username: "",
-        password: "",
-        email: "",
-        role: ""
+        "username": "",
+        "password": "",
+        // role: ""
     })
-    const [ error, setError ] = useState('')
+    const [ message, setMessage ] = useState('')
     const handleSubmit = e => {
         e.preventDefault();
-        axios.post(``, state)
+        axios.post(`https://anywhere-fitness-buildweek.herokuapp.com/api/clients/register`, state)
             .then(res => {
-                console.log(res)
+                setMessage(res.data)
             })
             .catch(err => {
                 console.log(err)
-                // setError(err.response.data)
             })
+        setState({
+            username: "",
+            password: "",
+        })
     }
     const handleChange = e => {
         setState({
@@ -29,104 +30,52 @@ const SignUp = () => {
         })
     }
 
-    const handleInstructor = e => {
-        setState({
-            ...state,
-            role: e.target.value
-        })
-    }
+    // const handleInstructor = e => {
+    //     setState({
+    //         ...state,
+    //         role: e.target.value
+    //     })
+    // }
 
-    return (<ComponentContainer>
-    <ModalContainer>
+    return (<div className="ComponentContainer">
+    <div className="ModalContainer">
         <div className="sign-up">
             <h1>Sign Up!</h1>
-            <FormGroup onSubmit={handleSubmit}>
-                <Label>
+            <form className="Form" onSubmit={handleSubmit}>
+                <label>
                     User Name
-                    <Input
+                    <input
                     name="username"
                     type="text"
                     onChange={handleChange}
                     value={state.username}
                     />
-                </Label>
-                <Label>
-                    Email
-                    <Input
-                    name="email"
-                    type="email"
-                    onChange={handleChange}
-                    value={state.email}
-                    />
-                </Label>
-                <Label>
+                </label>
+                <label>
                     Password
-                    <Input
+                    <input
                     name="password"
                     type="password"
                     onChange={handleChange}
                     value={state.password}
                     />
-                </Label>
-                <Label>
+                </label>
+                {/* <label>
                     Sign up as Instructor?
-                    <Select value={state.role} onChange={(e)=> handleInstructor(e)}>
+                    <select value={state.role} onChange={(e)=> handleInstructor(e)}>
                         <option value="" >Select</option>
                         <option name="instructor" value="instructor">Instructor</option>
                         <option name="client" value="client">Not Instructor</option>
-                    </Select>
-                </Label>
-                <Button>Sign Up</Button>
-            </FormGroup>
+                    </select>
+                </label> */}
+                <button>Sign Up</button>
                 {
-                    error ? <p className="error">{error}</p> : <div></div>
+                    message.message ? (<div><h2>{message.message}</h2></div>) : <div></div>
                 }
+            </form>                
         </div>
-    </ModalContainer>
-</ComponentContainer>
+    </div>
+</div>
     )
 }
 export default SignUp;
-
-const ComponentContainer = styled.div`
-    height: 70%;
-    justify-content: center;
-    align-items: center;
-    display:flex;
-`
-
-const ModalContainer = styled.div`
-    width: 500px;
-    background: white;
-    padding: 2rem;
-    text-align: center;
-    border-radius: 5px; 
-`
-
-const Label = styled.label`
-    display: block;
-    text-align: left;
-    font-size: 1.5rem;
-    margin-top: 0.5em;
-`
-
-const FormGroup = styled.form`
-    padding:1rem;
-`
-
-const Input = styled.input`
-    font-size: 1rem;
-    padding: 1rem 0;
-    width:100%;
-`
-const Select = styled.select`
-    font-size: 1rem;
-    padding: 1rem 0;
-    width:100%;
-`
-
-const Button = styled.button`
-    padding:1rem;
-    width: 100%;
-    margin-top: 1em;
-    `

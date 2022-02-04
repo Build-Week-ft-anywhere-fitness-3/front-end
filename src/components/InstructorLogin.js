@@ -6,7 +6,7 @@ import {Email, PhoneEnabled, Home } from "@material-ui/icons";
 import "./Login.css";
 
 
-const Login = () => {
+const InstructorLogin = () => {
     const push = useNavigate(); 
 
     const [cred, setCred] = useState({
@@ -24,15 +24,17 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault(); 
-        axios.post("https://anywhere-fitness-buildweek.herokuapp.com/api/clients/login", cred)
-            .then(resp => {
-                console.log(resp); 
-                localStorage.setItem("token",resp.data.token); 
-                push('/client')
-            })
-            .catch(err => {
-                console.log(err)
-            });
+        axios.post(`https://anywhere-fitness-buildweek.herokuapp.com/api/instructors/login`, cred)
+        .then(res => {
+            console.log(res)
+            localStorage.setItem("username", cred.username)
+            localStorage.setItem("id", res.data.instructor_id)
+            localStorage.setItem("token", res.data.token); 
+            push('/instructor')
+        })
+        .catch(err => {
+            console.log(err)
+        })
     };
 
     return (
@@ -86,4 +88,5 @@ const Login = () => {
 </>
     )
 }
-export default Login;
+
+export default InstructorLogin;

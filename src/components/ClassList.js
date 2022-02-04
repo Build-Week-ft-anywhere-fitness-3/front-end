@@ -6,12 +6,13 @@ import styled from 'styled-components';
 const ClassList = () => {
     const [ state, setState ] = useState([])
     useEffect(()=> {
-        axios.get(`https://bw-anywherefitness-3.herokuapp.com/api/classes`)
+        axios.get(`https://anywhere-fitness-buildweek.herokuapp.com/api/clients/classes/public`)
         .then(res=> {
+            console.log(res)
             setState(res.data)
         })
         .catch(err=> {
-            console.log(err)
+            console.log({err})
         })
     },[])
     return (
@@ -22,10 +23,11 @@ const ClassList = () => {
                         <ModalContainer>                        
                             <Details>
                                 <h2>{s.class_name}</h2>
-                                <h3>Date: {s.date} {s.time}</h3>
-                                <h3>Duration: {s.duration}</h3>
-                                <h3>Level: {s.intensity_level}</h3>
-                                <h3>Attendees: {s.attendees} people (Max: {s.max_size} people)</h3>
+                                <h4>Type: {s.class_type}</h4>
+                                <h4>Time: {s.class_start_time}</h4>
+                                <h4>Duration: {s.class_duration}</h4>
+                                <h4>Level: {s.class_intensity_level}</h4>
+                                <h4>Attendees: {s.total_clients} people (Max: {s.max_class_size} people)</h4>
                             </Details>                        
                         </ModalContainer>
                     </ComponentContainer>
@@ -47,7 +49,7 @@ const ComponentContainer = styled.div`
 const ModalContainer = styled.div`
     width: 500px;
     background: white;
-    padding: 2rem;
+    padding: 1rem;
     text-align: center;
 `
 const Details = styled.div`
